@@ -6,6 +6,5 @@ lerna-debug.log
 yarn-error.log
 _book
 .idea
-lib
 t.js
 tt.js
