@@ -1,6 +1,7 @@
 {
   "name": "taro",
   "description": "Nerv-multi多端开发解决方案",
+  "version": "0.1.0",
   "main": "index.js",
   "scripts": {
     "lint": "eslint packages/*/src --fix",
