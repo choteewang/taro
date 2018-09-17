@@ -1,6 +1,5 @@
 {
   "name": "taro",
-  "private": true,
   "description": "Nerv-multi多端开发解决方案",
   "main": "index.js",
   "scripts": {
@@ -20,7 +19,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/NervJS/taro.git"
+    "url": "git+https://github.com/choteewang/taro.git"
   },
   "lint-staged": {
     "*.{js,jsx}": [
