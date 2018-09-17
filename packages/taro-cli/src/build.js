@@ -7,7 +7,9 @@ const CONFIG = require('./config')
 
 const appPath = process.cwd()
 
-function build (args, buildConfig) {
+/* ctw do not merge */
+async function build (args, buildConfig) {
+/* ctw do not merge */
   const { type, watch } = buildConfig
   const outputPath = path.join(appPath, CONFIG.OUTPUT_DIR)
   if (!fs.existsSync(outputPath)) {
@@ -20,8 +22,10 @@ function build (args, buildConfig) {
       buildForH5({ watch })
       break
     case Util.BUILD_TYPES.WEAPP:
-      buildForWeapp({ watch })
+      /* ctw do not merge */
+      await buildForWeapp({ watch })
       break
+      /* ctw do not merge */
     case Util.BUILD_TYPES.RN:
       buildForRN({ watch })
       break
@@ -33,9 +37,12 @@ function build (args, buildConfig) {
   }
 }
 
+/* ctw do not merge */
 function buildForWeapp ({ watch }) {
-  require('./weapp').build({ watch })
+  let weapp = require('./weapp')
+  await weapp.build({ watch })
 }
+/* ctw do not merge */
 
 function buildForH5 (buildConfig) {
   require('./h5').build(buildConfig)
