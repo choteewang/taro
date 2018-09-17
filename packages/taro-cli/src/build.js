@@ -38,7 +38,7 @@ async function build (args, buildConfig) {
 }
 
 /* ctw do not merge */
-function buildForWeapp ({ watch }) {
+async function buildForWeapp ({ watch }) {
   let weapp = require('./weapp')
   await weapp.build({ watch })
   console.log('转换完成!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
