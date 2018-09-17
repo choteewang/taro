@@ -67,7 +67,42 @@ export const DEFAULT_Component_SET = new Set<string>([
   'MovableView',
   'FunctionalPageNavigator',
   'Ad',
-  'Block'
+  'Block',
+  /* ctw do not merge */
+  'span',
+  'p',
+  'b',
+  'i',
+  'em',
+  'bold',
+  'ins',
+  'ul',
+  'li',
+  'dt',
+  'dd',
+  'ol',
+  'option',
+  'select',
+  'td',
+  'tr',
+  'th',
+  'tbody',
+  'table',
+  'tfoot',
+  'thead',
+  'title',
+  'tt',
+  'a',
+  's',
+  'caption',
+  'del',
+  'h1',
+  'h2',
+  'h3',
+  'h4',
+  'h5',
+  'h6'
+  /* ctw do not merge */
 ])
 
 export const INTERNAL_SAFE_GET = 'internal_safe_get'

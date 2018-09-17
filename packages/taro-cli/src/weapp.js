@@ -3,7 +3,10 @@ const os = require('os')
 const path = require('path')
 const chalk = require('chalk')
 const chokidar = require('chokidar')
-const wxTransformer = require('@tarojs/transformer-wx')
+/* ctw do not merge */
+// const wxTransformer = require('@tarojs/transformer-wx')
+const wxTransformer = require('../../taro-transformer-wx')
+/* ctw do not merge */
 const traverse = require('babel-traverse').default
 const t = require('babel-types')
 const generate = require('babel-generator').default
@@ -27,7 +30,10 @@ const defaultTSConfig = require('./config/tsconfig.json')
 const astConvert = require('./util/ast_convert')
 
 const appPath = process.cwd()
-const configDir = path.join(appPath, Util.PROJECT_CONFIG)
+/* ctw do not merge */
+//const configDir = path.join(appPath, Util.PROJECT_CONFIG)
+const configDir = './configProject'
+/* ctw do not merge */
 const projectConfig = require(configDir)(_.merge)
 const sourceDirName = projectConfig.sourceRoot || CONFIG.SOURCE_DIR
 const outputDirName = projectConfig.outputRoot || CONFIG.OUTPUT_DIR
@@ -942,7 +948,9 @@ async function buildEntry () {
     // app.js的template忽略
     const res = parseAst(PARSE_AST_TYPE.ENTRY, transformResult.ast, [], entryFilePath, outputEntryFilePath)
     let resCode = res.code
-    resCode = await compileScriptFile(entryFilePath, resCode)
+    /* ctw do not merge */
+    // resCode = await compileScriptFile(entryFilePath, resCode)
+    /* ctw do not merge */
     resCode = Util.replaceContentEnv(resCode, projectConfig.env || {})
     resCode = Util.replaceContentConstants(resCode, projectConfig.defineConstants || {})
     if (isProduction) {
@@ -1120,7 +1128,9 @@ async function buildSinglePage (page) {
     const pageDepComponents = transformResult.components
     const res = parseAst(PARSE_AST_TYPE.PAGE, transformResult.ast, pageDepComponents, pageJs, outputPageJSPath)
     let resCode = res.code
-    resCode = await compileScriptFile(pageJs, resCode)
+    /* ctw do not merge */
+    // resCode = await compileScriptFile(pageJs, resCode)
+    /* ctw do not merge */
     resCode = Util.replaceContentEnv(resCode, projectConfig.env || {})
     resCode = Util.replaceContentConstants(resCode, projectConfig.defineConstants || {})
     if (isProduction) {
@@ -1427,7 +1437,9 @@ async function buildSingleComponent (componentObj, buildConfig = {}) {
     const componentDepComponents = transformResult.components
     const res = parseAst(PARSE_AST_TYPE.COMPONENT, transformResult.ast, componentDepComponents, component, outputComponentJSPath, buildConfig.npmSkip)
     let resCode = res.code
-    resCode = await compileScriptFile(component, resCode)
+    /* ctw do not merge */
+    // resCode = await compileScriptFile(component, resCode)
+    /* ctw do not merge */
     resCode = Util.replaceContentEnv(resCode, projectConfig.env || {})
     resCode = Util.replaceContentConstants(resCode, projectConfig.defineConstants || {})
     fs.ensureDirSync(path.dirname(outputComponentJSPath))
@@ -1572,7 +1584,9 @@ function compileDepScripts (scriptFiles) {
           const res = parseAst(PARSE_AST_TYPE.NORMAL, ast, [], item, outputItem)
           const fileDep = dependencyTree[item] || {}
           let resCode = res.code
-          resCode = await compileScriptFile(item, res.code)
+          /* ctw do not merge */
+          // resCode = await compileScriptFile(item, res.code)
+          /* ctw do not merge */
           fs.ensureDirSync(path.dirname(outputItem))
           resCode = Util.replaceContentEnv(resCode, projectConfig.env || {})
           resCode = Util.replaceContentConstants(resCode, projectConfig.defineConstants || {})
@@ -1812,16 +1826,25 @@ function watchFiles () {
     })
 }
 
-async function build ({ watch }) {
+async function build (/* ctw do not merge { watch } */) {
   process.env.TARO_ENV = Util.BUILD_TYPES.WEAPP
-  isProduction = !watch
+  /* ctw do not merge */
+  // isProduction = !watch
+  isProduction = false
+  /* ctw do not merge */
   buildProjectConfig()
   copyFiles()
   appConfig = await buildEntry()
   await buildPages()
+  /* ctw do not merge */
+  console.log('Enjoy -> 小程序, 第二步结束')
+  /* ctw do not merge */
+  /* 
   if (watch) {
     watchFiles()
   }
+  */
+  /* ctw do not merge */
 }
 
 module.exports = {
