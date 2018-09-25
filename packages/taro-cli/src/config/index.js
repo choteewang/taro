@@ -3,6 +3,6 @@ module.exports = {
   SOURCE_DIR: 'src',
   NPM_DIR: 'npm',
   /* ctw do not merge */
-  ENTRY: 'main'
+  ENTRY: 'app'
   /* ctw do not merge */
 }

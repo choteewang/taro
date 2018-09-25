@@ -2,7 +2,7 @@ const config = {
   projectName: 'taro_zhihu',
   date: '2018-6-12',
   designWidth: 750,
-  sourceRoot: 'src_temp',
+  sourceRoot: 'src',
   outputRoot: 'dist',
   plugins: {
     babel: {
